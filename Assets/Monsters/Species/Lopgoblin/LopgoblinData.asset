@@ -15,4 +15,19 @@ MonoBehaviour:
   Name: Lopgoblin
   Type: 0
   Rank: 0
+  Behavior: 0
   SpritePrefab: {fileID: 974099088164041671, guid: 052e639991c1604469822dda2ed8b49c, type: 3}
+  BaseStats:
+    HP: 15
+    MP: 7
+    ATK: 4
+    DEF: 4
+    AGI: 5
+    INT: 10
+  MaxStats:
+    HP: 1050
+    MP: 800
+    ATK: 400
+    DEF: 600
+    AGI: 850
+    INT: 1300

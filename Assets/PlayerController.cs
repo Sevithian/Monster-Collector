@@ -24,5 +24,7 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         CC.Move(((Vector3.forward * PI.RawInput.y) + (Vector3.right * PI.RawInput.x)) * MoveSpeed * Time.fixedDeltaTime);
+        if (!CC.isGrounded)
+            CC.Move(Vector3.down * 5);
     }
 }
