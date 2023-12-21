@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
             NavMeshHit hit;
             NavMesh.SamplePosition(spawnLocation.transform.position, out hit, 2f, 1);
             var spawnedMon = Instantiate(OverworldMonster, hit.position, Quaternion.identity);
-            spawnedMon.GetComponent<OverworldMonster>().Species = LevelEnemies[0];
+            spawnedMon.GetComponent<OverworldMonster>().Species = LevelEnemies[UnityEngine.Random.Range(0, LevelEnemies.Count)];
             spawnedMon.GetComponent<OverworldMonster>().Initialize();
         }
     }

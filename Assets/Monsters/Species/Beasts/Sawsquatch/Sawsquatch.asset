@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942499a5e0c78fe4a82215b8433b43bf, type: 3}
+  m_Name: Sawsquatch
+  m_EditorClassIdentifier: 
+  Name: Sawsquatch
+  Type: 2
+  Rank: 0
+  Behavior: 0
+  SpritePrefab: {fileID: 1904481302009578664, guid: ab6223fb5b6b5fe4ba689f15980e7944, type: 3}
+  BaseStats:
+    HP: 17
+    MP: 4
+    ATK: 13
+    DEF: 5
+    AGI: 3
+    INT: 3
+  MaxStats:
+    HP: 1500
+    MP: 350
+    ATK: 1300
+    DEF: 700
+    AGI: 600
+    INT: 550

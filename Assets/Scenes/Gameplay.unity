@@ -155,6 +155,7 @@ MonoBehaviour:
   OverworldMonster: {fileID: 7593669326622730724, guid: 7acfe9bef7edb734c8d561f9871deb2d, type: 3}
   LevelEnemies:
   - {fileID: 11400000, guid: 9c5c99f27a3a50c4ca994d8e4f19df62, type: 2}
+  - {fileID: 11400000, guid: 95d9ad374ede55c488519e28b6f8128f, type: 2}
 --- !u!4 &56880590
 Transform:
   m_ObjectHideFlags: 0
