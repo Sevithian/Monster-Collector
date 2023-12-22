@@ -531,7 +531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234487859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 2.6882, y: 2.6882, z: 2.6882}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -568,8 +568,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
-  Level: 15
-  Species: {fileID: 11400000, guid: 9c5c99f27a3a50c4ca994d8e4f19df62, type: 2}
+  Level: 25
+  Species: {fileID: 11400000, guid: 95d9ad374ede55c488519e28b6f8128f, type: 2}
   CurrentHP: 0
   CurrentMP: 0
   CurrentStats:
