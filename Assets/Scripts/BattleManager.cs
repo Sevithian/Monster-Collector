@@ -23,10 +23,10 @@ public class BattleManager : MonoBehaviour
         EnemyData = EnemyObj.GetComponent<MonsterData>();
         GrabEncounterData();
 
-        PlayerData = PlayerObj.GetComponent<MonsterData>();
+        PlayerData = GameManager.Instance.PlayerParty.PrimaryMonster;
 
-        EnemyData.SpawnMonster();
-        PlayerData.SpawnMonster();
+        Instantiate(EnemyData.Species.SpritePrefab, EnemyObj.transform);
+        Instantiate(PlayerData.Species.SpritePrefab, PlayerObj.transform);
 
         UpdateValues();
     }

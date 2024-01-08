@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum MonsterOwner { Player, Enemy }
+
+[System.Serializable]
 public class MonsterData : MonoBehaviour
 {
     public string Name;
@@ -13,17 +15,6 @@ public class MonsterData : MonoBehaviour
     public MonsterStats CurrentStats;
     public MonsterOwner Type;
 
-    public void SpawnMonster()
-    {
-        Instantiate(Species.SpritePrefab, this.transform);
-        if(Type == MonsterOwner.Enemy)
-        {
-            Name = Species.Name;
-            CurrentStats = CalculateStats(Species, Level);
-            CurrentHP = CurrentStats.HP;
-            CurrentMP = CurrentStats.MP;
-        }
-    }
     public MonsterStats CalculateStats(MonsterSpecies species, int level)
     {
         MonsterStats newStats = new MonsterStats();

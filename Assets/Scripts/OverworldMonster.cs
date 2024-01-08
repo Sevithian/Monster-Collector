@@ -83,6 +83,7 @@ public class OverworldMonster : MonoBehaviour
 
     private void PlayerEncounter()
     {
+        GameManager.Instance.FindPartyData();
         SceneTransitionManager.Instance.StoreEncounteredMonster(Species, Level);
         SceneTransitionManager.Instance.LoadBattleScene();
     }

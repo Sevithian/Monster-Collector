@@ -18,11 +18,17 @@ public class GameManager : MonoBehaviour
         // Singleton pattern
         if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
         else if (Instance != this) { Destroy(gameObject); }
+        AddDebugMonsters();
     }
 
-    public void Update()
+    private void AddDebugMonsters()
     {
-        DebugInputs();
+        var debugMon = GetComponent<MonsterData>();
+        debugMon.CurrentStats = debugMon.CalculateStats(debugMon.Species, debugMon.Level);
+        debugMon.CurrentHP = debugMon.CurrentStats.HP;
+        debugMon.CurrentMP = debugMon.CurrentStats.MP;
+        PlayerParty.PrimaryMonster = debugMon;
+        PlayerParty.AddMonster(debugMon);
     }
 
     public void FindPartyData()
@@ -30,34 +36,6 @@ public class GameManager : MonoBehaviour
         PlayerParty = FindObjectOfType<PartyData>();
     }
 
-    private void DebugInputs()
-    {
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            var debugMon = GetComponent<MonsterData>();
-            debugMon.CurrentStats = debugMon.CalculateStats(debugMon.Species, debugMon.Level);
-            debugMon.CurrentHP = debugMon.CurrentStats.HP;
-            debugMon.CurrentMP = debugMon.CurrentStats.MP;
-            PlayerParty.PrimaryMonster = new MonsterData
-            {
-                Name = debugMon.Name,
-                Level = debugMon.Level,
-                Species = debugMon.Species,
-                CurrentStats = debugMon.CurrentStats,
-                CurrentHP = debugMon.CurrentHP,
-                CurrentMP = debugMon.CurrentMP
-            };
-            PlayerParty.AddMonster(new MonsterData
-            {
-                Name = debugMon.Name,
-                Level = debugMon.Level,
-                Species = debugMon.Species,
-                CurrentStats = debugMon.CurrentStats,
-                CurrentHP = debugMon.CurrentHP,
-                CurrentMP = debugMon.CurrentMP
-            });
-        }
-    }
 
     public void SaveGame()
     {
