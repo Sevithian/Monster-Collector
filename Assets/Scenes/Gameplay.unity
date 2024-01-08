@@ -2782,6 +2782,7 @@ GameObject:
   - component: {fileID: 954081980}
   - component: {fileID: 954081982}
   - component: {fileID: 954081981}
+  - component: {fileID: 954081983}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2850,6 +2851,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+--- !u!114 &954081983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954081978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdaf24528d122dc4a8404c6be4f246b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrimaryMonster: {fileID: 0}
+  StorageMonsters: []
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3600,6 +3615,77 @@ Transform:
   m_Father: {fileID: 469582984}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1619235208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619235210}
+  - component: {fileID: 1619235209}
+  - component: {fileID: 1619235211}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1619235209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619235208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01796ee11004c1b4c9980ee313acb91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerParty: {fileID: 954081983}
+--- !u!4 &1619235210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619235208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.590085, y: 2.0069818, z: -3.5638032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1619235211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619235208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab79a746986adfc4b9acbb4aabfd42a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: George
+  Level: 15
+  Species: {fileID: 11400000, guid: 95d9ad374ede55c488519e28b6f8128f, type: 2}
+  CurrentHP: 0
+  CurrentMP: 0
+  CurrentStats:
+    HP: 0
+    MP: 0
+    ATK: 0
+    DEF: 0
+    AGI: 0
+    INT: 0
+  Type: 0
 --- !u!1 &1653322769
 GameObject:
   m_ObjectHideFlags: 0
