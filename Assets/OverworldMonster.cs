@@ -26,6 +26,9 @@ public class OverworldMonster : MonoBehaviour
     private void Start()
     {
         NMA = GetComponent<NavMeshAgent>();
+        IsIdle = true;
+        IdleTime = UnityEngine.Random.Range(MinIdleTime, MaxIdleTime);
+        WanderTime = UnityEngine.Random.Range(MinWanderTime, MaxWanderTime);
     }
 
     public void Update()
@@ -42,16 +45,16 @@ public class OverworldMonster : MonoBehaviour
 
     private void AnimateMonster()
     {
-        if (GetComponentInChildren<Animator>() != null && IsIdle)
+        if (IsIdle)
             GetComponentInChildren<Animator>().Play("Idle");
 
-        if (GetComponentInChildren<Animator>() != null && !IsIdle)
+        if (!IsIdle)
             GetComponentInChildren<Animator>().Play("Walk");
     }
 
     private void MoveAround()
     {
-        if(!IsIdle && (Timer > MaxWanderTime || Vector3.Distance(transform.position, Destination) < 0.5f))
+        if(!IsIdle && (Timer > WanderTime || Vector3.Distance(transform.position, Destination) < 0.5f))
         {
             Timer = 0;
             IsIdle = true;
@@ -59,7 +62,7 @@ public class OverworldMonster : MonoBehaviour
             IdleTime = UnityEngine.Random.Range(MinIdleTime, MaxIdleTime);
         }
 
-        if(IsIdle && Timer > MaxIdleTime)
+        if(IsIdle && Timer > IdleTime)
         {
             Timer = 0;
             IsIdle = false;
@@ -70,5 +73,17 @@ public class OverworldMonster : MonoBehaviour
             Destination = hit.position;
             NMA.SetDestination(Destination);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+            PlayerEncounter();
+    }
+
+    private void PlayerEncounter()
+    {
+        SceneTransitionManager.Instance.StoreEncounteredMonster(Species, Level);
+        SceneTransitionManager.Instance.LoadBattleScene();
     }
 }

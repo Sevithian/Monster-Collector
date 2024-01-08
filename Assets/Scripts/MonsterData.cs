@@ -24,7 +24,7 @@ public class MonsterData : MonoBehaviour
             CurrentMP = CurrentStats.MP;
         }
     }
-    private MonsterStats CalculateStats(MonsterSpecies species, int level)
+    public MonsterStats CalculateStats(MonsterSpecies species, int level)
     {
         MonsterStats newStats = new MonsterStats();
         int offset = 1; // Offset to avoid log(0)
@@ -38,8 +38,13 @@ public class MonsterData : MonoBehaviour
         return newStats;
     }
 
-    public void Start()
+    public void CopyData(MonsterData source)
     {
-         SpawnMonster();
+        Species = source.Species;
+        Level = source.Level;
+        CurrentStats = source.CurrentStats;
+        CurrentHP = source.CurrentHP;
+        CurrentMP = source.CurrentMP;
+        Name = source.Name;
     }
 }

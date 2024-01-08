@@ -13,23 +13,37 @@ public class BattleManager : MonoBehaviour
     public Image PlayerHP;
     public Image EnemyMP;
     public Image PlayerMP;
-    public MonsterData Enemy;
-    public MonsterData Player;
+    public GameObject EnemyObj;
+    public GameObject PlayerObj;
+    private MonsterData EnemyData;
+    private MonsterData PlayerData;
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            UpdateValues();
+        EnemyData = EnemyObj.GetComponent<MonsterData>();
+        GrabEncounterData();
+
+        PlayerData = PlayerObj.GetComponent<MonsterData>();
+
+        EnemyData.SpawnMonster();
+        PlayerData.SpawnMonster();
+
+        UpdateValues();
+    }
+
+    private void GrabEncounterData()
+    {
+        EnemyData.CopyData(SceneTransitionManager.Instance.EncounteredMonster);
     }
 
     public void UpdateValues()
     {
-        EnemyName.text = Enemy.Name;
-        EnemyHP.fillAmount = (float)Enemy.CurrentHP / Enemy.CurrentStats.HP;
-        EnemyMP.fillAmount = (float)Enemy.CurrentMP / Enemy.CurrentStats.MP;
+        EnemyName.text = EnemyData.Name;
+        EnemyHP.fillAmount = (float)EnemyData.CurrentHP / EnemyData.CurrentStats.HP;
+        EnemyMP.fillAmount = (float)EnemyData.CurrentMP / EnemyData.CurrentStats.MP;
 
-        PlayerName.text = Player.Name;
-        PlayerHP.fillAmount = (float)Player.CurrentHP / Player.CurrentStats.HP;
-        PlayerMP.fillAmount = (float)Player.CurrentMP / Player.CurrentStats.MP;
+        PlayerName.text = PlayerData.Name;
+        PlayerHP.fillAmount = (float)PlayerData.CurrentHP / PlayerData.CurrentStats.HP;
+        PlayerMP.fillAmount = (float)PlayerData.CurrentMP / PlayerData.CurrentStats.MP;
     }
 }

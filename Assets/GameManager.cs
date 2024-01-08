@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public GameObject OverworldMonster;
     public List<MonsterSpecies> LevelEnemies = new List<MonsterSpecies>();
+    public int MinMonsterLevel = 10;
+    public int MaxMonsterLevel = 15;
 
     private void Start()
     {
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
             NavMesh.SamplePosition(spawnLocation.transform.position, out hit, 2f, 1);
             var spawnedMon = Instantiate(OverworldMonster, hit.position, Quaternion.identity);
             spawnedMon.GetComponent<OverworldMonster>().Species = LevelEnemies[UnityEngine.Random.Range(0, LevelEnemies.Count)];
+            spawnedMon.GetComponent<OverworldMonster>().Level = UnityEngine.Random.Range(MinMonsterLevel, MaxMonsterLevel + 1);
             spawnedMon.GetComponent<OverworldMonster>().Initialize();
         }
     }
