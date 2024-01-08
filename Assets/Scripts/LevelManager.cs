@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     public GameObject OverworldMonster;
     public List<MonsterSpecies> LevelEnemies = new List<MonsterSpecies>();
