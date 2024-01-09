@@ -18,7 +18,15 @@ public class PartyDataEditor : Editor
             // Display properties of PrimaryMonster
             EditorGUILayout.LabelField("Name", partyData.PrimaryMonster.Name);
             EditorGUILayout.LabelField("Level", partyData.PrimaryMonster.Level.ToString());
-            EditorGUILayout.LabelField("Species", partyData.PrimaryMonster.Species.ToString());
+            EditorGUILayout.LabelField("SpeciesID", partyData.PrimaryMonster.SpeciesID.ToString());
+            try
+            {
+                EditorGUILayout.LabelField("Species Name", partyData.PrimaryMonster.Species.Name.ToString());
+            }
+            catch
+            {
+                
+            }
             EditorGUILayout.LabelField("CurrentHP", partyData.PrimaryMonster.CurrentHP.ToString());
             EditorGUILayout.LabelField("CurrentMP", partyData.PrimaryMonster.CurrentMP.ToString());
             EditorGUILayout.LabelField("Max HP:", partyData.PrimaryMonster.CurrentStats.HP.ToString());

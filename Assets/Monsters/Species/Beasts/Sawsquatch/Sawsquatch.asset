@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942499a5e0c78fe4a82215b8433b43bf, type: 3}
   m_Name: Sawsquatch
   m_EditorClassIdentifier: 
+  ID: 2
   Name: Sawsquatch
   Type: 2
   Rank: 0

@@ -5,15 +5,34 @@ using UnityEngine;
 public enum MonsterOwner { Player, Enemy }
 
 [System.Serializable]
-public class MonsterData : MonoBehaviour
+public class MonsterData
 {
     public string Name;
     public int Level;
-    public MonsterSpecies Species;
     public int CurrentHP;
     public int CurrentMP;
     public MonsterStats CurrentStats;
     public MonsterOwner Type;
+
+    public int SpeciesID;
+    private MonsterSpecies _species;
+    public MonsterSpecies Species
+    {
+        get { return _species; }
+        set
+        {
+            _species = value;
+            if (_species != null)
+            {
+                SpeciesID = _species.ID;
+            }
+        }
+    }
+    public MonsterData(int speciesID)
+    {
+        // Assuming GameManager has a method to get MonsterSpecies by ID
+        this.Species = GameManager.Instance.GetSpeciesByID(speciesID);
+    }
 
     public MonsterStats CalculateStats(MonsterSpecies species, int level)
     {
@@ -31,11 +50,17 @@ public class MonsterData : MonoBehaviour
 
     public void CopyData(MonsterData source)
     {
+        Name = source.Name;
         Species = source.Species;
         Level = source.Level;
         CurrentStats = source.CurrentStats;
         CurrentHP = source.CurrentHP;
         CurrentMP = source.CurrentMP;
-        Name = source.Name;
+    }
+
+    public void FullHeal()
+    {
+        CurrentHP = CurrentStats.HP;
+        CurrentMP = CurrentStats.MP;
     }
 }

@@ -20,7 +20,6 @@ public class BattleManager : MonoBehaviour
 
     private void Start()
     {
-        EnemyData = EnemyObj.GetComponent<MonsterData>();
         GrabEncounterData();
 
         PlayerData = GameManager.Instance.PlayerParty.PrimaryMonster;
@@ -33,7 +32,9 @@ public class BattleManager : MonoBehaviour
 
     private void GrabEncounterData()
     {
+        EnemyData = new MonsterData(SceneTransitionManager.Instance.EncounteredMonster.SpeciesID);
         EnemyData.CopyData(SceneTransitionManager.Instance.EncounteredMonster);
+        Debug.Log(EnemyData.Name);
     }
 
     public void UpdateValues()

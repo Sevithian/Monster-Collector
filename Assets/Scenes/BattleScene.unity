@@ -547,7 +547,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 265851563}
-  - component: {fileID: 265851562}
   m_Layer: 0
   m_Name: Enemy Monster
   m_TagString: Untagged
@@ -555,31 +554,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &265851562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265851561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab79a746986adfc4b9acbb4aabfd42a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: 
-  Level: 25
-  Species: {fileID: 11400000, guid: 95d9ad374ede55c488519e28b6f8128f, type: 2}
-  CurrentHP: 0
-  CurrentMP: 0
-  CurrentStats:
-    HP: 0
-    MP: 0
-    ATK: 0
-    DEF: 0
-    AGI: 0
-    INT: 0
-  Type: 1
 --- !u!4 &265851563
 Transform:
   m_ObjectHideFlags: 0
@@ -1192,7 +1166,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1106487580}
-  - component: {fileID: 1106487579}
   m_Layer: 0
   m_Name: Player Monster
   m_TagString: Untagged
@@ -1200,31 +1173,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1106487579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106487578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab79a746986adfc4b9acbb4aabfd42a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Jeffrey
-  Level: 15
-  Species: {fileID: 11400000, guid: 9c5c99f27a3a50c4ca994d8e4f19df62, type: 2}
-  CurrentHP: 15
-  CurrentMP: 15
-  CurrentStats:
-    HP: 15
-    MP: 15
-    ATK: 15
-    DEF: 15
-    AGI: 15
-    INT: 15
-  Type: 0
 --- !u!4 &1106487580
 Transform:
   m_ObjectHideFlags: 0

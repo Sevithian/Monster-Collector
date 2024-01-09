@@ -10,7 +10,6 @@ public class SceneTransitionManager : MonoBehaviour
 
     void Awake()
     {
-        EncounteredMonster = GetComponent<MonsterData>();
         if (Instance == null)
         {
             Instance = this;
@@ -24,16 +23,18 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void StoreEncounteredMonster(MonsterSpecies species, int level)
     {
+        EncounteredMonster = new MonsterData(species.ID);
+        EncounteredMonster.Name = species.Name;
         EncounteredMonster.Species = species;
         EncounteredMonster.Level = level;
         EncounteredMonster.CurrentStats = EncounteredMonster.CalculateStats(species, level);
-        EncounteredMonster.Name = species.Name;
         EncounteredMonster.CurrentHP = EncounteredMonster.CurrentStats.HP;
         EncounteredMonster.CurrentMP = EncounteredMonster.CurrentStats.MP;
     }
 
     public void LoadBattleScene()
     {
+        GameManager.Instance.SaveWorldState();
         SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Single);
     }
 }

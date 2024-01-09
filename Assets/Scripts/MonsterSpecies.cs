@@ -9,6 +9,7 @@ public enum MonsterBehavior { Follow, Flee, None }
 [CreateAssetMenu(fileName = "Monster", menuName = "New Monster",order = 0)]
 public class MonsterSpecies : ScriptableObject
 {
+    public int ID;
     public string Name;
     public MonsterType Type;
     public MonsterRank Rank;
