@@ -22,6 +22,9 @@ public class SceneTransitionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        foreach (Transform child in this.transform)
+            DontDestroyOnLoad(child.gameObject);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -84,15 +87,18 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void SceneTransition(int animationID)
     {
-        switch(animationID)
+        if(this.gameObject != null)
         {
-            case 0:
-                GetComponentInChildren<Animator>().Play("FadeTransitionWipeIN");
-                return;
+            switch(animationID)
+            {
+                case 0:
+                    GetComponentInChildren<Animator>().Play("FadeTransitionWipeIN");
+                    return;
             
-            case 1:
-                GetComponentInChildren<Animator>().Play("FadeTransitionWipeOut");
-                return;
+                case 1:
+                    GetComponentInChildren<Animator>().Play("FadeTransitionWipeOut");
+                    return;
+            }
         }
     }
 }

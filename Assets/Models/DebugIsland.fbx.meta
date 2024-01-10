@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Invisible
+    second: {fileID: 2100000, guid: a12aa8725fcb1034297bbbd441208b08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Rock
     second: {fileID: 2100000, guid: 9c55654233c6c2d428cc6e146550882b, type: 2}
   - first:
