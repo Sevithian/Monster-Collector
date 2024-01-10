@@ -22,12 +22,17 @@ public class LevelManager : MonoBehaviour
         var spawnLocations = FindObjectsOfType<MonsterSpawner>();
         foreach (var spawnLocation in spawnLocations)
         {
-            NavMeshHit hit;
-            NavMesh.SamplePosition(spawnLocation.transform.position, out hit, 2f, 1);
-            var spawnedMon = Instantiate(OverworldMonster, hit.position, Quaternion.identity);
-            spawnedMon.GetComponent<OverworldMonster>().Species = LevelEnemies[UnityEngine.Random.Range(0, LevelEnemies.Count)];
-            spawnedMon.GetComponent<OverworldMonster>().Level = UnityEngine.Random.Range(MinMonsterLevel, MaxMonsterLevel + 1);
-            spawnedMon.GetComponent<OverworldMonster>().Initialize();
+            if(spawnLocation.transform.childCount == 0 && 
+                Vector3.Distance(spawnLocation.transform.position, 
+                FindObjectOfType<PlayerController>().transform.position) > 3f)
+            {
+                NavMeshHit hit;
+                NavMesh.SamplePosition(spawnLocation.transform.position, out hit, 2f, 1);
+                var spawnedMon = Instantiate(OverworldMonster, spawnLocation.transform);
+                spawnedMon.GetComponent<OverworldMonster>().Species = LevelEnemies[UnityEngine.Random.Range(0, LevelEnemies.Count)];
+                spawnedMon.GetComponent<OverworldMonster>().Level = UnityEngine.Random.Range(MinMonsterLevel, MaxMonsterLevel + 1);
+                spawnedMon.GetComponent<OverworldMonster>().Initialize();
+            }
         }
     }
 }
