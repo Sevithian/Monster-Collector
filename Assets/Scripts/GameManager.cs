@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
         else if (Instance != this) { Destroy(gameObject); }
         AddDebugMonsters();
+        WorldManager.Instance.SpawnLevel(0);
     }
 
     private void AddDebugMonsters()
@@ -61,10 +62,11 @@ public class GameManager : MonoBehaviour
 
     public void SaveWorldState()
     {
-        SavedWorldData = new WorldState();
+        if (SavedWorldData == null)
+            SavedWorldData = new WorldState();
         SavedWorldData.WorldID = WorldManager.Instance.CurrentLevel;
         SavedWorldData.PlayerPos = FindObjectOfType<PlayerController>().transform.position;
-        Debug.Log("Saving world state");
+        Debug.Log("Saving world state, Player position at: " + SavedWorldData.PlayerPos);
     }
 
     public MonsterSpecies GetSpeciesByID(int id)

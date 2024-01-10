@@ -30,6 +30,17 @@ public class BattleManager : MonoBehaviour
         UpdateValues();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            EndBattle();
+    }
+
+    private void EndBattle()
+    {
+        SceneTransitionManager.Instance.LoadOverworldScene();
+    }
+
     private void GrabEncounterData()
     {
         EnemyData = new MonsterData(SceneTransitionManager.Instance.EncounteredMonster.SpeciesID);

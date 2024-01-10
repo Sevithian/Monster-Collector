@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     PlayerInputs PI;
     CharacterController CC;
 
+
     private void Start()
     {
         PI = GetComponent<PlayerInputs>();

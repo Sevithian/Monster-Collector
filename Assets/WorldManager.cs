@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Definition for what data pairing should qualify as an entry in 
 //our world dictionary/registry which will allow specific lookup
@@ -25,6 +26,8 @@ public class WorldManager : MonoBehaviour
 
     void Awake()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         // Singleton pattern
         if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
         else if (Instance != this) { Destroy(gameObject); }
@@ -32,9 +35,10 @@ public class WorldManager : MonoBehaviour
         //Setup the world registry with key/value pairing
         foreach (var entry in worldDictionary)
             worldRegistry.Add(entry.levelID, entry.LevelPrefab);
-        
-        //Spawn the debug level
-        SpawnLevel(0);
+    }
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     //Method to spawn a level based on a levelID provided
@@ -44,6 +48,25 @@ public class WorldManager : MonoBehaviour
         Instantiate(GetWorldByID(levelID), this.transform); //Load the new level
         CurrentLevel = levelID;
         LevelLoaded = true; //Update bool accordingly
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (GameManager.Instance.SavedWorldData != null)
+            if (FindObjectOfType<PlayerController>() != null)
+                UpdatePlayerPosition();
+            else
+                Debug.Log("Player object not found!");
+        else
+            Debug.Log("GM's SavedWorldData is null!");
+    }
+
+    public void UpdatePlayerPosition()
+    {
+        FindObjectOfType<PlayerController>().GetComponent<CharacterController>().enabled = false;
+        Debug.Log("Updating Player Position to " + GameManager.Instance.SavedWorldData.PlayerPos);
+        FindObjectOfType<PlayerController>().transform.position = GameManager.Instance.SavedWorldData.PlayerPos;
+        FindObjectOfType<PlayerController>().GetComponent<CharacterController>().enabled = true;
     }
 
     //Method to clear the level (children) of this script

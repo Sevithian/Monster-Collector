@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnEnemies();
+        Invoke("SpawnEnemies", 0.1f);
     }
 
     public void SpawnEnemies()
