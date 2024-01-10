@@ -314,7 +314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954081978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.95, y: 0.25, z: 0.77}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 1145573281}
   - component: {fileID: 1145573280}
   m_Layer: 0
-  m_Name: World
+  m_Name: WorldManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -514,9 +514,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977121dd12c7c38498c3cd197ec27388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentLevel: 0
+  LevelLoaded: 0
   worldDictionary:
   - levelID: 0
-    LevelPrefab: {fileID: 5172132741975924192, guid: f49a506e872130146b8631fa378a55f2, type: 3}
+    LevelPrefab: {fileID: 861957868752492613, guid: 3b6ab9bc6b8d37c4798a9529b42bc244, type: 3}
+  battlefieldRegistry:
+  - {fileID: 2041446788354135989, guid: de29fe9c9efd509489f596c5a85c61d1, type: 3}
 --- !u!4 &1145573281
 Transform:
   m_ObjectHideFlags: 0
@@ -525,7 +529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145573279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0452065, y: 5.2202907, z: -7.156927}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

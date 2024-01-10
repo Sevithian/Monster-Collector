@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     Dictionary<int, MonsterSpecies> speciesRegistry = new Dictionary<int, MonsterSpecies>();
 
     public PartyData PlayerParty;
+    public WorldState SavedWorldData;
 
     void Awake()
     {
@@ -58,8 +59,11 @@ public class GameManager : MonoBehaviour
         PlayerParty.AddMonster(debugMon2);
     }
 
-    internal void SaveWorldState()
+    public void SaveWorldState()
     {
+        SavedWorldData = new WorldState();
+        SavedWorldData.WorldID = WorldManager.Instance.CurrentLevel;
+        SavedWorldData.PlayerPos = FindObjectOfType<PlayerController>().transform.position;
         Debug.Log("Saving world state");
     }
 
@@ -107,7 +111,7 @@ public class GameManager : MonoBehaviour
 
 public class WorldState
 {
-    Vector3 PlayerPos;
-    int WorldID;
+    public Vector3 PlayerPos;
+    public int WorldID;
 }
 

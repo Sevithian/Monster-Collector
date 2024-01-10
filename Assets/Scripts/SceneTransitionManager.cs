@@ -35,6 +35,8 @@ public class SceneTransitionManager : MonoBehaviour
     public void LoadBattleScene()
     {
         GameManager.Instance.SaveWorldState();
+        WorldManager.Instance.ClearLevel();
+        WorldManager.Instance.SpawnBattleground(GameManager.Instance.SavedWorldData.WorldID);
         SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Single);
     }
 }
