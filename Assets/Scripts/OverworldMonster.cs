@@ -49,7 +49,7 @@ public class OverworldMonster : MonoBehaviour
             GetComponentInChildren<Animator>().Play("Idle");
 
         if (!IsIdle)
-            GetComponentInChildren<Animator>().Play("Walk");
+                GetComponentInChildren<Animator>().Play("Walk");
     }
 
     private void MoveAround()

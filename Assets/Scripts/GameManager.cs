@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         var debugMon2 = new MonsterData (2)
         {
             Name = "Frank",
-            Level = 15
+            Level = 11
         };
         debugMon1.CurrentStats = debugMon1.CalculateStats(debugMon1.Species, debugMon1.Level);
         debugMon1.FullHeal();

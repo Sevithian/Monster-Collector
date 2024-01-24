@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 //Definition for what data pairing should qualify as an entry in 
 //our world dictionary/registry which will allow specific lookup
@@ -45,7 +46,7 @@ public class WorldManager : MonoBehaviour
     public void SpawnLevel(int levelID)
     {
         ClearLevel(); //Clear the previously loaded level
-        Instantiate(GetWorldByID(levelID), this.transform); //Load the new level
+        var lvl = Instantiate(GetWorldByID(levelID), this.transform); //Load the new level
         CurrentLevel = levelID;
         LevelLoaded = true; //Update bool accordingly
     }

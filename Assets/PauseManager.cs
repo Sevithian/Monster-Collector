@@ -1,29 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class PauseManager : MonoBehaviour
 {
-    public GameObject PreviewSpriteObj;
+    public bool GamePaused = false;
+    public GameObject PauseCanvas;
 
-    public void Awake()
+    public void Update()
     {
-        GameManager.Instance.PlayerParty.OnPrimaryMonsterChanged += PrimaryChangedHandler;
-        if (GameManager.Instance.PlayerParty.PrimaryMonster != null)
-            Instantiate(GameManager.Instance.PlayerParty.PrimaryMonster.Species.SpritePrefab, PreviewSpriteObj.transform);
+        GetInputs();
     }
 
-    private void OnDestroy()
+    private void GetInputs()
     {
-        GameManager.Instance.PlayerParty.OnPrimaryMonsterChanged -= PrimaryChangedHandler;
+        if (Input.GetKeyDown(KeyCode.Escape))
+            TogglePause();
     }
 
-    private void PrimaryChangedHandler(MonsterData newPrimaryMonster)
+    private void TogglePause()
     {
-        if (PreviewSpriteObj.transform.childCount > 0)
-            foreach (Transform child in PreviewSpriteObj.transform)
-                Destroy(child.gameObject);
+        GamePaused = !GamePaused;
 
-        Instantiate(GameManager.Instance.PlayerParty.PrimaryMonster.Species.SpritePrefab, PreviewSpriteObj.transform);
+        if(GamePaused)
+        {
+            Time.timeScale = 0;
+            PauseCanvas.SetActive(true);
+            return;
+        }
+        else if(!GamePaused)
+        {
+            Time.timeScale = 1;
+            PauseCanvas.SetActive(false);
+            return;
+        }
     }
 }
