@@ -6,5 +6,4 @@ public class PlayerData : MonoBehaviour
 {
     public string PlayerName;
     public int ElapsedTime;
-    public Vector3 WorldPosition;
 }

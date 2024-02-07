@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     public PartyData PlayerParty;
     public WorldState SavedWorldData;
+    public PlayerData SavedPlayerData;
 
     void Awake()
     {
