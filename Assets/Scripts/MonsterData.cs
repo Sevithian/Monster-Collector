@@ -63,4 +63,18 @@ public class MonsterData
         CurrentHP = CurrentStats.HP;
         CurrentMP = CurrentStats.MP;
     }
+
+    public void RestoreHP(int amount)
+    {
+        CurrentHP += amount;
+        if (CurrentHP > CurrentStats.HP)
+            CurrentHP = CurrentStats.HP;
+    }
+    
+    public void RestoreMP(int amount)
+    {
+        CurrentMP += amount;
+        if (CurrentMP > CurrentStats.MP)
+            CurrentMP = CurrentStats.MP;
+    }
 }
