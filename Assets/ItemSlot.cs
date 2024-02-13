@@ -23,6 +23,7 @@ public class ItemSlot : MonoBehaviour
 
     public void Initialize()
     {
+        this.gameObject.name = Item.Name;
         Icon.sprite = Item.Icon;
         Quantity.text = FindObjectOfType<PlayerData>().PlayerInventory.FindAll(x => x.ID == Item.ID).Count.ToString();
         Name.text = Item.Name;
@@ -37,4 +38,9 @@ public class ItemSlot : MonoBehaviour
     {
         DescriptionRef.text = "Hover over an item to get a description of it.";
     }    
+
+    public void SetInventorySelection()
+    {
+        FindObjectOfType<InventoryDisplay>().SelectedItemSlot = this;
+    }
 }
