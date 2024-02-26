@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3115330554044911355}
   - component: {fileID: 3115330554044911357}
-  - component: {fileID: 2037609226249253814}
-  - component: {fileID: 7366767532711673897}
+  - component: {fileID: 1265906123}
+  - component: {fileID: 1223599214376419383}
   m_Layer: 0
-  m_Name: ItemSlot
+  m_Name: MonsterSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3115330554044911354}
   m_CullTransparentMesh: 1
---- !u!114 &2037609226249253814
+--- !u!114 &1265906123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,14 +58,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3115330554044911354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0f4025b660cb7d41b5f8db7cc115591, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ef0d56c1e519ff4fa26be91f7f84b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: 3115330554895980745}
-  Quantity: {fileID: 0}
-  Name: {fileID: 0}
-  DescriptionRef: {fileID: 0}
---- !u!114 &7366767532711673897
+  Data:
+    Name: 
+    Level: 0
+    CurrentHP: 0
+    CurrentMP: 0
+    CurrentStats:
+      HP: 0
+      MP: 0
+      ATK: 0
+      DEF: 0
+      AGI: 0
+      INT: 0
+    Type: 0
+    SpeciesID: 0
+--- !u!114 &1223599214376419383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,44 +88,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 4
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2037609226249253814}
-          m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
-          m_MethodName: DisplayDescription
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2037609226249253814}
-          m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
-          m_MethodName: ResetDescription
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2037609226249253814}
-          m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
+        - m_Target: {fileID: 1265906123}
+          m_TargetAssemblyTypeName: MonsterSlot, Assembly-CSharp
           m_MethodName: SetInventorySelection
           m_Mode: 1
           m_Arguments:
