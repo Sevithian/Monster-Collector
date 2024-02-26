@@ -41,6 +41,8 @@ public class InventoryDisplay : MonoBehaviour
 
     private void RefreshInventory()
     {
+        SelectionPanel.SetActive(false);
+        _SelectedItemSlot = null;
         var PD = FindObjectOfType<PlayerData>();
         var PI = PD.PlayerInventory;
         foreach (Transform child in transform)
@@ -60,11 +62,6 @@ public class InventoryDisplay : MonoBehaviour
             {
                 itemCounts.Add(item.ID, 1);
             }
-        }
-
-        if (SelectedItemSlot == null)
-        {
-            SelectionPanel.SetActive(false);
         }
 
         // Instantiate ItemSlots
