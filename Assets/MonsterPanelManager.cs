@@ -33,6 +33,7 @@ public class MonsterPanelManager : MonoBehaviour
 
     private void InstantiatePreviewMonster()
     {
+        CurrentPrimary.Species = GameManager.Instance.GetSpeciesByID(CurrentPrimary.SpeciesID);
         var monPrev = Instantiate(CurrentPrimary.Species.SpritePrefab, PreviewSpriteObj.transform);
         monPrev.transform.localPosition = Vector3.zero;
         monPrev.GetComponent<EntitySprite>().enabled = false;

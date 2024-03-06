@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -7,6 +8,7 @@ public class StorageDisplay : MonoBehaviour
 {
     public GameObject monsterSlotPrefab;
     public GameObject SelectionPanel;
+    public GameObject StorageGrid;
     public TextMeshProUGUI NameLabel;
     public TextMeshProUGUI ATKDEFLabel;
     public TextMeshProUGUI HPMPLabel;
@@ -19,6 +21,10 @@ public class StorageDisplay : MonoBehaviour
         {
             _SelectedMonsterSlot = value;
             SelectionPanel.SetActive(true);
+            NameLabel.gameObject.SetActive(true);
+            ATKDEFLabel.gameObject.SetActive(true);
+            HPMPLabel.gameObject.SetActive(true);
+            AGIINTLabel.gameObject.SetActive(true);
             SelectionPanel.transform.position = value.transform.position;
         }
     }
@@ -33,37 +39,49 @@ public class StorageDisplay : MonoBehaviour
     private void OnEnable()
     {
         SelectionPanel.SetActive(false);
+        NameLabel.gameObject.SetActive(false);
+        ATKDEFLabel.gameObject.SetActive(false);
+        HPMPLabel.gameObject.SetActive(false);
+        AGIINTLabel.gameObject.SetActive(false);
         _SelectedMonsterSlot = null;
-        Invoke("RefreshStorage", 0.1f);
+        RefreshStorage();
     }
 
     public void SwapMonsters()
     {
+        var PD = FindObjectOfType<PartyData>();
+        Debug.Log($"Swapping {PD.PrimaryMonster.Name} with {SelectedMonsterSlot.Data.Name}");
         try
         {
             var temp = FindObjectOfType<PartyData>().PrimaryMonster;
             FindObjectOfType<PartyData>().PrimaryMonster = SelectedMonsterSlot.Data;
             FindObjectOfType<PartyData>().StorageMonsters.Remove(SelectedMonsterSlot.Data);
             FindObjectOfType<PartyData>().StorageMonsters.Add(temp);
+            NameLabel.gameObject.SetActive(false);
+            ATKDEFLabel.gameObject.SetActive(false);
+            HPMPLabel.gameObject.SetActive(false);
+            AGIINTLabel.gameObject.SetActive(false);
             RefreshStorage();
         }
-        catch
+        catch (Exception e)
         {
-            Debug.Log("Swap error");    
+            Debug.Log($"Swap error: {e}");
         }
     }
+
     private void RefreshStorage()
     {
+        Debug.Log("Refreshing Storage");
         SelectionPanel.SetActive(false);
         _SelectedMonsterSlot = null;
         var PD = FindObjectOfType<PartyData>();
-        foreach (Transform child in transform)
+        foreach (Transform child in StorageGrid.transform)
         {
             Destroy(child.gameObject);
         }
         foreach(MonsterData monster in PD.StorageMonsters)
         {
-            var mon = Instantiate(monsterSlotPrefab, this.transform);
+            var mon = Instantiate(monsterSlotPrefab, StorageGrid.transform);
             mon.GetComponent<MonsterSlot>().Data = monster;
         }
     }
