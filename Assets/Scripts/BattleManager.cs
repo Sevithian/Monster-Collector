@@ -9,14 +9,16 @@ public class BattleManager : MonoBehaviour
 {
     public TextMeshProUGUI EnemyName;
     public TextMeshProUGUI PlayerName;
+
+
     public Image EnemyHP;
     public Image PlayerHP;
     public Image EnemyMP;
     public Image PlayerMP;
     public GameObject EnemyObj;
     public GameObject PlayerObj;
-    private MonsterData EnemyData;
-    private MonsterData PlayerData;
+    public MonsterData EnemyData;
+    public MonsterData PlayerData;
 
     private void Start()
     {
@@ -36,7 +38,24 @@ public class BattleManager : MonoBehaviour
             EndBattle();
     }
 
-    private void EndBattle()
+    internal void UseAttack(MonsterAttack attack, MonsterData target)
+    {
+        Debug.Log($"Using {attack.Name} on {target.Name}");
+        //Check for accuracy
+        if(attack.AccuracyRating > UnityEngine.Random.Range(0, 100))
+        {
+            //Apply Damage
+            target.CurrentHP -= attack.BasePower;
+        }
+        else
+        {
+            Debug.Log("Missed");
+        }
+
+        UpdateValues();
+    }
+
+    public void EndBattle()
     {
         SceneTransitionManager.Instance.LoadOverworldScene();
     }

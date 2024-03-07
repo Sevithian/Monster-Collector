@@ -11,6 +11,7 @@ public class MonsterData
     public int Level;
     public int CurrentHP;
     public int CurrentMP;
+    public MonsterAttack[] Attacks;
     public MonsterStats CurrentStats;
     public MonsterOwner Type;
 

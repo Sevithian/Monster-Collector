@@ -32,3 +32,7 @@ MonoBehaviour:
     DEF: 700
     AGI: 600
     INT: 550
+  DefaultAttacks:
+  - {fileID: 11400000, guid: 7a65cccebec64ff4b85cdfb2be5efb8f, type: 2}
+  PlayerSeen: 0
+  PlayerCaught: 0

@@ -17,6 +17,7 @@ public class MonsterSpecies : ScriptableObject
     public GameObject SpritePrefab;
     public MonsterStats BaseStats;
     public MonsterStats MaxStats;
+    public MonsterAttack[] DefaultAttacks;
     public bool PlayerSeen = false;
     public bool PlayerCaught = false;
 }

@@ -41,6 +41,7 @@ public class SceneTransitionManager : MonoBehaviour
         EncounteredMonster.CurrentStats = EncounteredMonster.CalculateStats(species, level);
         EncounteredMonster.CurrentHP = EncounteredMonster.CurrentStats.HP;
         EncounteredMonster.CurrentMP = EncounteredMonster.CurrentStats.MP;
+        EncounteredMonster.Attacks = species.DefaultAttacks;
     }
 
     public void LoadBattleScene()
